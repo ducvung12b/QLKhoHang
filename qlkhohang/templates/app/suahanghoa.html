@@ -1,0 +1,18 @@
+<!-- inventory/templates/suachitiet.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sửa Thông Tin Mặt Hàng</title>
+</head>
+<body>
+    <h1>Sửa Thông Tin Mặt Hàng: {{ hanghoa.ten }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Lưu</button>
+    </form>
+    {% if success_message %}
+        <p>{{ success_message }}</p>
+    {% endif %}
+</body>
+</html>

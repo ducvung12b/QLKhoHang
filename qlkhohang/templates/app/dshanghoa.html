@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Danh Sach Hang Hoa</h1>
+    {% if messages %} 
+    <ul class="messages"> 
+        {% for message in messages %} 
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li> 
+        {% endfor %} 
+    </ul> 
+    {% endif %}
+    <table class="table table-bordered">
+        <thead> 
+            <tr> 
+                <th style="padding-left: 40px;">Tên</th> 
+                <th style="padding-left: 40px;">Đơn Vị Tính</th> 
+                <th style="padding-left: 40px;">Tồn Kho</th> 
+                <th style="padding-left: 80px;"><a href="{% url 'themhanghoa' %}">Thêm</a></th> 
+            </tr> 
+        </thead> 
+        <tbody> {% for hanghoa in hanghoas %} <tr> 
+            <td style="padding-left: 40px;">{{ hanghoa.ten }}</td> 
+            <td style="padding-left: 40px;">{{ hanghoa.donvitinh }}</td> 
+            <td style="padding-left: 40px;">{{ hanghoa.total_quantity }}</td> 
+            <td style="padding-left: 40px;"><a href="{% url 'suahanghoa' hanghoa.id %}">Sửa</a>
+        </tr> {% endfor %} 
+    </tbody>
+    </table>
+</body>
+</html>
